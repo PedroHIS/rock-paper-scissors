@@ -37,3 +37,25 @@ function playRound(playerSelection, computerSelection) {
     }
     return [2, `You Win! ${playerSelection} beats ${computerSelection}`];
 }
+
+function game() {
+    const numberOfRounds = 5;
+    let playerWinsCount = 0;
+    let computerWinsCount = 0;
+
+    for (let i = 0; i < numberOfRounds; i++) {
+        const playerSelection = getPlayerChoice();
+        const computerSelection = getComputerChoice();
+
+        const resultRound = playRound(playerSelection, computerSelection);
+        if (resultRound[0]) {
+            resultRound[0] === 1 ? computerWinsCount++ : playerWinsCount++;
+        }
+        console.log(resultRound[1]);
+    }
+
+    const winner = playerWinsCount > computerWinsCount ? "Player Wins!" : (playerWinsCount < computerWinsCount ? "Computer Wins!" : "Tie!");
+    console.log(winner);
+}
+
+game();

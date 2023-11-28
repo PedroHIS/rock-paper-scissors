@@ -13,18 +13,18 @@
                 <div id="player" class="generic-player">
                     <p>PLAYER</p>
                     <ul>
-                        <li><img id="rock-player" src="assets/rock-icon.png" alt="Rock"></li>
-                        <li><img id="paper-player" src="assets/paper-icon.png" alt="Paper"></li>
-                        <li><img id="scissors-player" src="assets/scissors-icon.png" alt="Scissors"></li>
+                        <li><img id="rock-player" src="assets/rock-icon.png" alt="Rock" onclick="game('rock')"></li>
+                        <li><img id="paper-player" src="assets/paper-icon.png" alt="Paper" onclick="game('paper')"></li>
+                        <li><img id="scissors-player" src="assets/scissors-icon.png" alt="Scissors" onclick="game('scissors')"></li>
                     </ul>
                 </div>
                 <p id="versus">VS</p>
                 <div id="computer" class="generic-player">
                     <p>COMPUTER</p>
                     <ul>
-                        <li><img src="assets/rock-icon.png" alt="Rock"></li>
-                        <li><img src="assets/paper-icon.png" alt="Paper"></li>
-                        <li><img src="assets/scissors-icon.png" alt="Scissors"></li>
+                        <li><img id="rock-computer" src="assets/rock-icon.png" alt="Rock"></li>
+                        <li><img id="paper-computer"src="assets/paper-icon.png" alt="Paper"></li>
+                        <li><img id="scissors-computer"src="assets/scissors-icon.png" alt="Scissors"></li>
                     </ul>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                 <p>SCISSERS - ROCK - PAPER - SCISSERS - ROCK - PAPER</p>
             </div>
             <div id="output-display">
-                <p>Output!</p>
+                <p id="text-output">Click on one of the player icons!</p>
             </div>
         </section>
 

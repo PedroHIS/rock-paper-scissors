@@ -4,12 +4,14 @@ function getComputerChoice() {
     
     return options[randomIndex];
 }
-
+/*
 function getPlayerChoice() {
     const options = ['rock', 'paper', 'scissors'];
     const userChoice = prompt('Choose an option (rock, paper, or scissors):');
     return options.includes(userChoice.toLowerCase()) ? userChoice.toLowerCase() : getPlayerChoice();
 }
+*/
+
 
 function playRound(playerSelection, computerSelection) {
     /*
@@ -38,6 +40,16 @@ function playRound(playerSelection, computerSelection) {
     return [2, `You Win! ${playerSelection} beats ${computerSelection}`];
 }
 
+function game(playerChoice){
+    let playerSelection = playerChoice;
+    let computerSelection = getComputerChoice();
+    let resultRound = playRound(playerSelection, computerSelection);
+    
+    console.log(resultRound[1]);
+    document.getElementById("text-output").innerHTML = resultRound[1];
+}
+
+/*
 function game() {
     const numberOfRounds = 5;
     let playerWinsCount = 0;
@@ -59,3 +71,4 @@ function game() {
 }
 
 game();
+*/

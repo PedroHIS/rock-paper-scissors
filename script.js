@@ -40,13 +40,38 @@ function playRound(playerSelection, computerSelection) {
     return [2, `You Win! ${playerSelection} beats ${computerSelection}`];
 }
 
+function changeBrightness(idImage) {
+    document.getElementById(idImage).style.filter='brightness(75%)';
+}
+
+function resetBrightness(idImage) {
+    document.getElementById(idImage).style.filter='brightness(100%)';
+}
+
+let isRunning = false;
+
 function game(playerChoice){
-    let playerSelection = playerChoice;
-    let computerSelection = getComputerChoice();
-    let resultRound = playRound(playerSelection, computerSelection);
+    if(isRunning){
+        return;
+    }
     
+    isRunning = true;
+    
+    const playerSelection = playerChoice;
+    const computerSelection = getComputerChoice();
+    const resultRound = playRound(playerSelection, computerSelection);
+    
+
+    changeBrightness(playerSelection + '-player');
+    changeBrightness(computerSelection + '-computer');
     console.log(resultRound[1]);
     document.getElementById("text-output").innerHTML = resultRound[1];
+
+    setTimeout(function() {
+        resetBrightness(playerSelection + '-player');
+        resetBrightness(computerSelection + '-computer');
+        isRunning = false;
+    }, 2500);
 }
 
 /*

@@ -50,28 +50,30 @@ function resetBrightness(idImage) {
 
 let isRunning = false;
 
-function game(playerChoice){
+function game(playerSelection){
     if(isRunning){
         return;
     }
     
     isRunning = true;
     
-    const playerSelection = playerChoice;
+    const idPlayerSelection = playerSelection + '-player';
     const computerSelection = getComputerChoice();
+    const idComputerSelection = computerSelection + '-computer';
+    
+    changeBrightness(idPlayerSelection);
+    changeBrightness(idComputerSelection);
+    
     const resultRound = playRound(playerSelection, computerSelection);
     
-
-    changeBrightness(playerSelection + '-player');
-    changeBrightness(computerSelection + '-computer');
     console.log(resultRound[1]);
     document.getElementById("text-output").innerHTML = resultRound[1];
 
     setTimeout(function() {
-        resetBrightness(playerSelection + '-player');
-        resetBrightness(computerSelection + '-computer');
+        resetBrightness(idPlayerSelection);
+        resetBrightness(idComputerSelection);
         isRunning = false;
-    }, 2500);
+    }, 1500);
 }
 
 /*

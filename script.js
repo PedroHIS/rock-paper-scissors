@@ -4,14 +4,6 @@ function getComputerChoice() {
     
     return options[randomIndex];
 }
-/*
-function getPlayerChoice() {
-    const options = ['rock', 'paper', 'scissors'];
-    const userChoice = prompt('Choose an option (rock, paper, or scissors):');
-    return options.includes(userChoice.toLowerCase()) ? userChoice.toLowerCase() : getPlayerChoice();
-}
-*/
-
 
 function playRound(playerSelection, computerSelection) {
     /*
@@ -23,22 +15,19 @@ function playRound(playerSelection, computerSelection) {
     */
     const options = ['rock', 'paper', 'scissors'];
     const indexPlayer = options.indexOf(playerSelection);
-    
-    if (playerSelection === computerSelection) {
+    const indexComputer= options.indexOf(computerSelection);
+
+    if (indexPlayer === indexComputer) {
         return [0, `It's a tie! Both chose ${playerSelection}`];
     }
-    
-    let correctionLastElement = 0;
-    if (playerSelection === 'scissors') {
-        correctionLastElement = 3;
+
+    if ((indexPlayer - 1 === indexComputer) || (indexPlayer === 0 && indexComputer === 2)) {
+        return [2, `You Win! ${playerSelection} beats ${computerSelection}`];
     }
 
-    const rightElement = options[(indexPlayer + 1) - correctionLastElement];
-    if (computerSelection === rightElement) {
-        return [1, `You Lose! ${computerSelection} beats ${playerSelection}`];
-    }
-    return [2, `You Win! ${playerSelection} beats ${computerSelection}`];
+    return [1, `You Lose! ${computerSelection} beats ${playerSelection}`];
 }
+
 
 function changeBrightness(idImage) {
     document.getElementById(idImage).style.filter='brightness(75%)';
@@ -93,7 +82,9 @@ function game() {
         console.log(resultRound[1]);
     }
 
-    const winner = playerWinsCount > computerWinsCount ? "Player Wins!" : (playerWinsCount < computerWinsCount ? "Computer Wins!" : "Tie!");
+    //const winner = playerWinsCount > computerWinsCount ? "Player Wins!" : (playerWinsCount < computerWinsCount ? "Computer Wins!" : "Tie!");
+    const condition = playerWinsCont % computerWinsCount;
+    const winner =  !condition ? "Tie!" : (condition === playerWinsCont ? "Player Wins!" : "Computer Wins!");
     console.log(winner);
 }
 
